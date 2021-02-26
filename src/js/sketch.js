@@ -3,6 +3,13 @@ let ball;
 let players = [];
 let target1, target2;
 let hit = true;
+
+var musicLoop;
+
+function preload(){
+  musicLoop = loadSound("/src/assets/sfx/musicloop.wav");
+}
+
 function setup() {
   bg = loadImage("/src/assets/sprites/board.png")
   ball = new Ball(BallFactory.coords(board.width/2, board.height/2));
@@ -22,6 +29,9 @@ function setup() {
 
 
   createCanvas(board.width,board.height);
+
+  musicLoop.loop();
+
 }
 
 function between(x, min, max){

@@ -11,11 +11,14 @@ class Ball {
 
         this.speedX =5;
         this.speedY =5;
+
+        this.hitSound = loadSound("/src/assets/sfx/kick.wav");
     }
 
     move(){
         if(this.y >= board.height-this.diameter || this.y <= 0){
             this.speedY *= -1;
+            this.hitSound.play();
         }
         this.x += this.speedX;
         this.y += this.speedY;
@@ -23,6 +26,7 @@ class Ball {
     }
     bounceHorizontal(){
         this.speedX *= -1;
+        this.hitSound.play();
     }
 
     draw() {
