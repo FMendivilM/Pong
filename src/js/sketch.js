@@ -1,32 +1,36 @@
 let bg;
 let ball;
 let players = [];
-let target1, target2;
-let hit = true;
+let pts;
+let gameFont;
 
 var musicLoop;
 
 function preload(){
   musicLoop = loadSound("/src/assets/sfx/musicloop.wav");
+  bg = loadImage("/src/assets/sprites/board.png");
+  gameFont = loadFont("/src/assets/font/kenvector_future_thin.ttf");
 }
 
 function setup() {
-  bg = loadImage("/src/assets/sprites/board.png")
-  ball = new Ball(BallFactory.coords(board.width/2, board.height/2));
-
+ 
   players.push(
     new Paddle(
       PaddleFactory.coords(0, board.height/2 - paddle.height/2),
-      PaddleFactory.controlSettings("87","83")
+      PaddleFactory.controlSettings("87","83"),
+      playersId.player1,
       ),
   
     new Paddle(
       PaddleFactory.coords(board.width - paddle.width, board.height/2 - paddle.height/2),
-      PaddleFactory.controlSettings("38","40")
+      PaddleFactory.controlSettings("38","40"),
+      playersId.player2,
       ),
-
   );
 
+  ball = new Ball(BallFactory.coords(board.width/2, board.height/2),players);
+
+  pts = new Points(PointFactory.coords(board.width/2, 100),gameFont);
 
   createCanvas(board.width,board.height);
 
@@ -34,27 +38,9 @@ function setup() {
 
 }
 
-function between(x, min, max){
- return x >= min && x <= max;
-}
-
 function draw() {
-
   background(bg);
   ball.draw();
+  pts.draw();
   players.forEach(player => player.draw());
-  
-  if((between(ball.getX(), players[0].getX(), players[0].getX()+5) && between(ball.getY(), players[0].getY()- paddle.height/2, players[0].getY() + paddle.height)) && hit){
-    ball.bounceHorizontal();
-    hit = !hit;
-  }
-
-  if((between(ball.getX(), players[1].getX()- paddle.width, players[1].getX()) && between(ball.getY(), players[1].getY()- paddle.height/2, players[1].getY() + paddle.height)) && hit){
-    ball.bounceHorizontal();
-    hit = !hit;
-  }
-
-  if(ball.getX() == board.width/2){
-    hit = true;
-  }
 }
