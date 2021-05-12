@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pong</title>
     <style>
     *{
@@ -12,17 +13,30 @@
     }
     </style>
 
-    <script src="/libs/p5.js"></script>
-    <script src="/src/js/sketch.js"></script>
+    <script src="/libs/p5.min.js"></script>
+    <script src="/addons/p5.sound.min.js"></script>
     <script src="/src/js/helpers/constants.js"></script>
     <script src="/src/js/objects/Hitbox.js"></script>
     <script src="/src/js/objects/Ball.js"></script>
     <script src="/src/js/objects/Points.js"></script>
     <script src="/src/js/objects/Paddle.js"></script>
-    <script src="/addons/p5.sound.js"></script>
+    <script src="/src/js/sketch.js"></script>
 
 </head>
 <body>
     <main></main>
+    <div id="instructions">
+        <h1>Instrucciones:</h1>
+        <h2>Paddle izquierdo:</h2>
+        <ul>
+          <li>Arriba: W</li>
+          <li>Abajo: S</li>
+        </ul>
+        <h2>Paddle derecho:</h2>
+        <ul>
+          <li>Arriba: Flecha arriba</li>
+          <li>Abajo: Flecha Abajo</li>
+        </ul>
+      </div>
 </body>
 </html>
